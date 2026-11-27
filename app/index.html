@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sistema simples de controle de tarefas.">
+  <title>Organiza — Controle de Tarefas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">O</span><div><strong>Organiza</strong><small>Controle de tarefas</small></div></div>
+    <span class="top-note">Produtividade simples, em um só lugar</span>
+  </header>
+
+  <main class="container">
+    <section class="intro">
+      <div>
+        <p class="eyebrow">PAINEL DE ORGANIZAÇÃO</p>
+        <h1>Suas tarefas,<br><span>sob controle.</span></h1>
+        <p class="intro-copy">Cadastre atividades, acompanhe os prazos e mantenha tudo organizado.</p>
+      </div>
+      <div class="summary" aria-label="Resumo das tarefas">
+        <div><strong id="total-count">0</strong><span>Total</span></div>
+        <div><strong id="pending-count">0</strong><span>Pendentes</span></div>
+        <div><strong id="done-count">0</strong><span>Concluídas</span></div>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <section class="panel form-panel">
+        <div class="panel-heading">
+          <div><p class="eyebrow">NOVA ATIVIDADE</p><h2 id="form-heading">Cadastrar tarefa</h2></div>
+          <span class="heading-icon">＋</span>
+        </div>
+        <form id="task-form" novalidate>
+          <input type="hidden" id="task-id">
+          <label for="title">Título <span>*</span></label>
+          <input id="title" name="title" maxlength="80" placeholder="Ex.: Entregar atividade de qualidade" required>
+          <label for="description">Descrição</label>
+          <textarea id="description" name="description" rows="3" maxlength="500" placeholder="Detalhes da tarefa (opcional)"></textarea>
+          <label for="assignee">Responsável <span>*</span></label>
+          <input id="assignee" name="assignee" maxlength="80" placeholder="Nome do responsável" required>
+          <label for="dueDate">Data de vencimento <span>*</span></label>
+          <input id="dueDate" name="dueDate" type="date" required>
+          <label for="status">Status</label>
+          <select id="status" name="status">
+            <option value="Pendente">Pendente</option>
+            <option value="Em andamento">Em andamento</option>
+            <option value="Concluída">Concluída</option>
+          </select>
+          <p id="form-message" class="form-message" role="alert" aria-live="polite"></p>
+          <div class="form-actions">
+            <button class="button primary" type="submit" id="submit-button">Salvar tarefa</button>
+            <button class="button ghost hidden" type="button" id="cancel-edit">Cancelar</button>
+          </div>
+          <p class="required-note">* Campos obrigatórios</p>
+        </form>
+      </section>
+
+      <section class="panel list-panel">
+        <div class="list-heading">
+          <div><p class="eyebrow">ACOMPANHAMENTO</p><h2>Minhas tarefas</h2></div>
+          <span id="visible-count" class="count-pill">0 tarefas</span>
+        </div>
+        <div class="toolbar">
+          <input id="search" type="search" placeholder="Buscar por título ou responsável..." aria-label="Buscar tarefas">
+          <select id="filter-status" aria-label="Filtrar por status">
+            <option value="">Todos os status</option>
+            <option>Pendente</option><option>Em andamento</option><option>Concluída</option>
+          </select>
+        </div>
+        <div id="task-list" class="task-list" aria-live="polite">
+          <div class="empty-state"><span>✓</span><strong>Nenhuma tarefa por aqui</strong><p>Cadastre sua primeira atividade ao lado.</p></div>
+        </div>
+      </section>
+    </section>
+    <footer>Organiza · Dados salvos neste navegador por meio do LocalStorage.</footer>
+  </main>
+  <script src="task-core.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

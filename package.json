@@ -1,0 +1,9 @@
+{
+  "name": "organiza-controle-tarefas",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mini projeto acadêmico de Garantia da Qualidade de Software",
+  "scripts": {
+    "test": "node --test tests/*.test.js"
+  }
+}
